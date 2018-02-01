@@ -6,13 +6,13 @@
 #include <vtkMarchingCubes.h>
 #include <vtkMetaImageReader.h>
 #include <vtkSmartPointer.h>
-#include <vtkXMLPolyDataWriter.h>
+#include <vtkPolyDataWriter.h>
 
 int main (int argc, char *argv[])
 {
   if (argc < 3)
   {
-    cout << "Usage: " << argv[0] << " input.mhd output.vtp" << endl;
+    cout << "Usage: " << argv[0] << " input.mhd output.vtk" << endl;
     return EXIT_FAILURE;
   }
 
@@ -27,8 +27,8 @@ int main (int argc, char *argv[])
   skinExtractor->SetInputConnection(reader->GetOutputPort());
   skinExtractor->SetValue(0, 500);
 
-  vtkSmartPointer<vtkXMLPolyDataWriter> writer =
-    vtkSmartPointer<vtkXMLPolyDataWriter>::New();
+  vtkSmartPointer<vtkPolyDataWriter> writer =
+    vtkSmartPointer<vtkPolyDataWriter>::New();
   writer->SetInputConnection(skinExtractor->GetOutputPort());
   writer->SetFileName(argv[2]);
   writer->Write();

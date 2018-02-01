@@ -17,7 +17,7 @@
 #include <vtkMaskFields.h>
 #include <vtkThreshold.h>
 #include <vtkGeometryFilter.h>
-#include <vtkXMLPolyDataWriter.h>
+#include <vtkPolyDataWriter.h>
 #include <vtkSmartPointer.h>
 
 #include <vtkImageData.h>
@@ -48,8 +48,8 @@ int main (int argc, char *argv[])
     vtkSmartPointer<vtkMaskFields>::New();
   vtkSmartPointer<vtkGeometryFilter> geometry =
     vtkSmartPointer<vtkGeometryFilter>::New();
-  vtkSmartPointer<vtkXMLPolyDataWriter> writer =
-    vtkSmartPointer<vtkXMLPolyDataWriter>::New();
+  vtkSmartPointer<vtkPolyDataWriter> writer =
+    vtkSmartPointer<vtkPolyDataWriter>::New();
 
   // Define all of the variables
   unsigned int startLabel = atoi(argv[2]);
@@ -119,7 +119,7 @@ int main (int argc, char *argv[])
 
     // output the polydata
     std::stringstream ss;
-    ss << filePrefix << i << ".vtp";
+    ss << filePrefix << i << ".vtk";
     std::cout << argv[0] << " writing " << ss.str() << std::endl;
 
     writer->SetFileName(ss.str().c_str());
