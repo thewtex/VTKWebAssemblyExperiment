@@ -48,13 +48,18 @@ const runMedicalDemo1 = function() {
   const desiredOutputs = [
     { path: args[1], type: IOTypes.Binary }
   ]
-  console.log('inputImage:')
-  console.log(inputImage)
+  const inputImageCopy = inputImage.slice(0);
+  const image = new Uint8Array(inputImageCopy)
   const inputs = [
-    { path: args[0], type: IOTypes.Binary, data: new Uint8Array(inputImage) }
+    { path: args[0], type: IOTypes.Binary, data: image }
   ]
+  const t0 = performance.now()
   return runPipelineBrowser(pipelinePath, args, desiredOutputs, inputs)
   .then(function ({stdout, stderr, outputs}) {
+    const t1 = performance.now();
+    const medicalDemo1TextArea = document.getElementById('medicalDemo1TextArea');
+    medicalDemo1TextArea.textContent = "Pipeline took " + (t1 - t0) + " milliseconds."
+    console.log("runMedicalDemo1 took " + (t1 - t0) + " milliseconds.")
     console.log(stdout)
     console.log(stderr)
     console.log(outputs)
