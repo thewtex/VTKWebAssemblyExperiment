@@ -7,6 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 import axios from 'axios'
 import curry from 'curry'
 import PromiseFileReader from 'promise-file-reader'
+import FileSaver from 'file-saver'
 
 import readImageFile from 'itk/readImageFile'
 import runPipelineBrowser from 'itk/runPipelineBrowser'
@@ -18,7 +19,7 @@ registerServiceWorker();
 let inputImage = null
 
 // Print output input image's information
-const outputFileInformation = curry(function outputFileInformation (outputTextArea, eventOrFile) {
+const outputFileInformation = curry(function (outputTextArea, eventOrFile) {
   const dataTransfer = eventOrFile.dataTransfer
   let file = eventOrFile
   if (dataTransfer || eventOrFile.target) {
@@ -28,6 +29,7 @@ const outputFileInformation = curry(function outputFileInformation (outputTextAr
   PromiseFileReader.readAsArrayBuffer(file).then(function(arrayBuffer) { inputImage = arrayBuffer; })
   return readImageFile(file)
     .then(function (image) {
+      image.name = file.name
       function replacer (key, value) {
         if (!!value && value.byteLength !== undefined) {
           return String(value.slice(0, 6)) + '...'
@@ -42,6 +44,10 @@ const outputInputImageInformation = outputFileInformation(outputTextArea)
 const imageFileInput = document.getElementById('imageInput')
 imageFileInput.addEventListener('change', outputInputImageInformation);
 
+
+
+// MedicalDemo1
+let medicalDemo1Output = null
 const runMedicalDemo1 = function() {
   const pipelinePath = 'MedicalDemo1'
   const args = ['InputImage.vtk', 'OutputSurface.vtk']
@@ -59,6 +65,7 @@ const runMedicalDemo1 = function() {
     const t1 = performance.now();
     const medicalDemo1TextArea = document.getElementById('medicalDemo1TextArea');
     medicalDemo1TextArea.textContent = "Pipeline took " + (t1 - t0) + " milliseconds."
+    medicalDemo1Output = outputs[0].data
     console.log("runMedicalDemo1 took " + (t1 - t0) + " milliseconds.")
     console.log(stdout)
     console.log(stderr)
@@ -67,9 +74,16 @@ const runMedicalDemo1 = function() {
 }
 const runMedicalDemo1Button = document.getElementById('runMedicalDemo1');
 runMedicalDemo1Button.addEventListener('click', runMedicalDemo1)
+const downloadMedicalDemo1Output = function () {
+  const isosurfaceBlob = new window.Blob([medicalDemo1Output])
+  FileSaver.saveAs(isosurfaceBlob, 'OutputSurface.vtk')
+}
+const medicalDemo1DownloadButton = document.getElementById('runMedicalDemo1Output');
+medicalDemo1DownloadButton.addEventListener('click', downloadMedicalDemo1Output)
 
 
-// An example input image to use
+
+// An example input image to use by default
 const fileName = 'FullHead.vtk'
 const testFilePath = './' + fileName
 axios.get(testFilePath, {responseType: 'blob'})
@@ -83,4 +97,3 @@ axios.get(testFilePath, {responseType: 'blob'})
     image.name = fileName;
     console.log(image)
   })
-
