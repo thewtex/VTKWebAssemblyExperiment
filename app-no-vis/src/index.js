@@ -64,12 +64,10 @@ const runMedicalDemo1 = function() {
   .then(function ({stdout, stderr, outputs}) {
     const t1 = performance.now();
     const medicalDemo1TextArea = document.getElementById('medicalDemo1TextArea');
-    medicalDemo1TextArea.textContent = "Pipeline took " + (t1 - t0) + " milliseconds."
+    medicalDemo1TextArea.textContent = "Runtime initialization, execution, and data marshalling took: " + (t1 - t0) + " milliseconds.\n" + stdout
     medicalDemo1Output = outputs[0].data
     console.log("runMedicalDemo1 took " + (t1 - t0) + " milliseconds.")
-    console.log(stdout)
     console.log(stderr)
-    console.log(outputs)
   })
 }
 const runMedicalDemo1Button = document.getElementById('runMedicalDemo1');
@@ -93,7 +91,4 @@ axios.get(testFilePath, {responseType: 'blob'})
   }).then(function (jsFile) {
     outputInputImageInformation(jsFile);
     return readImageFile(jsFile)
-  }).then(function (image) {
-    image.name = fileName;
-    console.log(image)
   })
