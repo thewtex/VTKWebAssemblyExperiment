@@ -10,8 +10,8 @@
 //          not exist in the volume, it will be skipped.
 //
 //
-#include <vtkMetaImageReader.h>
 #include <vtkImageAccumulate.h>
+#include <vtkStructuredPointsReader.h>
 #include <vtkDiscreteMarchingCubes.h>
 #include <vtkWindowedSincPolyDataFilter.h>
 #include <vtkMaskFields.h>
@@ -34,8 +34,9 @@ int main (int argc, char *argv[])
   }
 
   // Create all of the classes we will need
-  vtkSmartPointer<vtkMetaImageReader> reader =
-    vtkSmartPointer<vtkMetaImageReader>::New();
+  vtkSmartPointer<vtkStructuredPointsReader> reader =
+    vtkSmartPointer<vtkStructuredPointsReader>::New();
+  reader->ReadAllScalarsOn();
   vtkSmartPointer<vtkImageAccumulate> histogram =
     vtkSmartPointer<vtkImageAccumulate>::New();
   vtkSmartPointer<vtkDiscreteMarchingCubes> discreteCubes =

@@ -4,7 +4,7 @@
 //
 
 #include <vtkMarchingCubes.h>
-#include <vtkMetaImageReader.h>
+#include <vtkStructuredPointsReader.h>
 #include <vtkSmartPointer.h>
 #include <vtkPolyDataWriter.h>
 
@@ -12,13 +12,14 @@ int main (int argc, char *argv[])
 {
   if (argc < 3)
   {
-    cout << "Usage: " << argv[0] << " input.mhd output.vtk" << endl;
+    cout << "Usage: " << argv[0] << " inputImage.vtk outputMesh.vtk" << endl;
     return EXIT_FAILURE;
   }
 
-  vtkSmartPointer<vtkMetaImageReader> reader =
-    vtkSmartPointer<vtkMetaImageReader>::New();
+  vtkSmartPointer<vtkStructuredPointsImageReader> reader =
+    vtkSmartPointer<vtkStructuredPointsImageReader>::New();
   reader->SetFileName (argv[1]);
+  reader->ReadAllScalarsOn();
 
   // An isosurface, or contour value of 500 is known to correspond to the
   // skin of the patient.
