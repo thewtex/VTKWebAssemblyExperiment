@@ -27,20 +27,36 @@ const yValueTiming = [
   'MedicalDemo1<br> Linux Chrome 65.0.3325.162<br> First Run',
   'MedicalDemo1<br> Linux Chrome 65.0.3325.162<br> Second Run',
   'MedicalDemo1<br> Linux Chrome 65.0.3325.162<br> Execution',
+  'MedicalDemo1<br> Linux Firefox 59.0.1<br> First Run',
+  'MedicalDemo1<br> Linux Firefox 59.0.1<br> Second Run',
+  'MedicalDemo1<br> Linux Firefox 59.0.1<br> Execution',
+  '',
   'GenerateModelsFromLabels<br> Linux native binary',
   'GenerateModelsFromLabels<br> Linux Chrome 65.0.3325.162<br> First Run',
   'GenerateModelsFromLabels<br> Linux Chrome 65.0.3325.162<br> Second Run',
   'GenerateModelsFromLabels<br> Linux Chrome 65.0.3325.162<br> Execution',
+  'GenerateModelsFromLabels<br> Linux Firefox 59.0.1<br> First Run',
+  'GenerateModelsFromLabels<br> Linux Firefox 59.0.1<br> Second Run',
+  'GenerateModelsFromLabels<br> Linux Firefox 59.0.1<br> Execution',
 ];
 const xValueTiming = [
   790,
   4276,
   2932,
   2862,
+  4306,
+  3654,
+  3536,
+
+  0,
+
   1332,
   4896,
   3427,
   3316,
+  4878,
+  4068,
+  3972,
   ]
 
 class App extends Component {
