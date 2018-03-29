@@ -19,22 +19,29 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>VTK WebAssembly Experiment</title>
   </head>
   <body>
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    <h3>Input image</h3>
+    <div>
+      <label>Select input image:</label>
+      <input id="imageInput" name="inputFile" type="file">
+    </div>
+    <div>
+      <textarea id="fileInformationTextArea" name="fileInformation" rows="20" cols="80">Input image information...</textarea>
+    </div>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <div>
+      <h3>MedicalDemo1</h3>
+      <input id="runMedicalDemo1" type="button" value="Run MedicalDemo1"></input>
+      <br>
+      <textarea id="medicalDemo1TextArea" name="medicalDemo1" rows="5" cols="30">Timing information...</textarea>
+    </div>
+
   </body>
 </html>

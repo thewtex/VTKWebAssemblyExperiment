@@ -16,8 +16,8 @@ int main (int argc, char *argv[])
     return EXIT_FAILURE;
   }
 
-  vtkSmartPointer<vtkStructuredPointsImageReader> reader =
-    vtkSmartPointer<vtkStructuredPointsImageReader>::New();
+  vtkSmartPointer<vtkStructuredPointsReader> reader =
+    vtkSmartPointer<vtkStructuredPointsReader>::New();
   reader->SetFileName (argv[1]);
   reader->ReadAllScalarsOn();
 
