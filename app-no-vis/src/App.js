@@ -7,6 +7,8 @@ const xValueSize = [
   'ImageMarchingCubes<br> vtk.js',
   'GenerateModelsFromLabels<br> asm.js',
   'GenerateModelsFromLabels<br> wasm',
+  'MedicalDemo1<br> asm.js',
+  'MedicalDemo1<br> wasm',
   'ITK pipeline<br> asm.js',
   'ITK pipeline<br> wasm',
 ];
@@ -14,8 +16,10 @@ const yValueSize = [
   32,
   8036,
   3752,
+  7764,
+  3624,
+  1356,
   752,
-  3752,
 ];
 
 class App extends Component {
@@ -37,7 +41,7 @@ class App extends Component {
             type: 'bar',
           },
         ]}
-        layout={{width: 1024, height: 480, title: 'Filter Size (KB)'}}
+        layout={{width: 1024, height: 480, title: 'Pipeline Size (KB)'}}
       />
       </div>
     );
