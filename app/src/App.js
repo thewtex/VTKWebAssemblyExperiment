@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Plot from 'react-plotly.js';
 
 import { Theme as UWPThemeProvider, getTheme } from "react-uwp/Theme";
 
@@ -14,12 +15,14 @@ export class App extends React.Component {
           desktopBackgroundImage: "public/background.svg" // set global desktop background image
         })}
       >
+      <div>
 	<div className="App">
 	  <header className="App-header">
 	    <h1 className="App-title">VTK WebAssembly Experiment</h1>
 	  </header>
 	</div>
 	<h1>VTK WebAssembly Experiment</h1>
+      </div>
       </UWPThemeProvider>
     )
   }
