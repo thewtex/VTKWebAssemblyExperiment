@@ -64,9 +64,10 @@ const runMedicalDemo1 = function() {
   .then(function ({stdout, stderr, outputs}) {
     const t1 = performance.now();
     const medicalDemo1TextArea = document.getElementById('medicalDemo1TextArea');
-    medicalDemo1TextArea.textContent = "Runtime initialization, execution, and data marshalling took: " + (t1 - t0) + " milliseconds.\n" + stdout
+    const duration = Number(t1 - t0).toFixed(1).toString() 
+    medicalDemo1TextArea.textContent = "Runtime initialization, execution, and data marshalling took: " + duration + " milliseconds.\n" + stdout
     medicalDemo1Output = outputs[0].data
-    console.log("runMedicalDemo1 took " + (t1 - t0) + " milliseconds.")
+    console.log("runMedicalDemo1 took " + duration + " milliseconds.")
     console.log(stderr)
   })
 }
