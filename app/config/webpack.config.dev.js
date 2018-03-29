@@ -12,6 +12,9 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 
+const vtkRules = require('vtk.js/Utilities/config/rules-vtk.js');
+const CopyPlugin = require('copy-webpack-plugin');
+
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
 const publicPath = '/';
@@ -208,7 +211,7 @@ module.exports = {
       },
       // ** STOP ** Are you adding a new loader?
       // Make sure to add the new loader(s) before the "file" loader.
-    ],
+    ].concat(vtkRules),
   },
   plugins: [
     // Makes some environment variables available in index.html.
@@ -243,6 +246,20 @@ module.exports = {
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new CopyPlugin([
+      {
+      from: path.join(__dirname, '..', 'node_modules', 'itk', 'WebWorkers'),
+      to: path.join(__dirname, '..', 'public', 'itk', 'WebWorkers'),
+      },
+      {
+      from: path.join(__dirname, '..', 'node_modules', 'itk', 'ImageIOs'),
+      to: path.join(__dirname, '..','public', 'itk', 'ImageIOs'),
+      },
+      {
+      from: path.join(__dirname, '..', 'node_modules', 'itk', 'MeshIOs'),
+      to: path.join(__dirname, '..', 'public', 'itk', 'MeshIOs'),
+      },
+    ]),
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.
@@ -258,5 +275,6 @@ module.exports = {
   // cumbersome.
   performance: {
     hints: false,
+    maxAssetSize: 10000000
   },
 };

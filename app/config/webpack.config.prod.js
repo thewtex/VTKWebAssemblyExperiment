@@ -13,6 +13,8 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
 
+const vtkRules = require('vtk.js/Utilities/config/rules-vtk.js');
+
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
 const publicPath = paths.servedPath;
@@ -231,7 +233,7 @@ module.exports = {
           // Make sure to add the new loader(s) before the "file" loader.
         ],
       },
-    ],
+    ].concat(vtkRules),
   },
   plugins: [
     // Makes some environment variables available in index.html.

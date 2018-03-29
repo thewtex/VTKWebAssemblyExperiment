@@ -1,21 +1,29 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 
-class App extends Component {
+import { Theme as UWPThemeProvider, getTheme } from "react-uwp/Theme";
+
+export class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+      <UWPThemeProvider
+        theme={getTheme({
+          themeName: "dark", // set custom theme
+          accent: "#0078D7", // set accent color
+          useFluentDesign: true, // sure you want use new fluent design.
+          desktopBackgroundImage: "public/background.svg" // set global desktop background image
+        })}
+      >
+	<div className="App">
+	  <header className="App-header">
+	    <h1 className="App-title">VTK WebAssembly Experiment</h1>
+	  </header>
+	</div>
+	<h1>VTK WebAssembly Experiment</h1>
+      </UWPThemeProvider>
+    )
   }
 }
+
 
 export default App;
