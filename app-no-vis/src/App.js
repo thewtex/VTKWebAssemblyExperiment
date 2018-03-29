@@ -22,6 +22,27 @@ const yValueSize = [
   752,
 ];
 
+const yValueTiming = [
+  'MedicalDemo1<br> Linux native binary',
+  'MedicalDemo1<br> Linux Chrome 65.0.3325.162<br> First Run',
+  'MedicalDemo1<br> Linux Chrome 65.0.3325.162<br> Second Run',
+  'MedicalDemo1<br> Linux Chrome 65.0.3325.162<br> Execution',
+  'GenerateModelsFromLabels<br> Linux native binary',
+  'GenerateModelsFromLabels<br> Linux Chrome 65.0.3325.162<br> First Run',
+  'GenerateModelsFromLabels<br> Linux Chrome 65.0.3325.162<br> Second Run',
+  'GenerateModelsFromLabels<br> Linux Chrome 65.0.3325.162<br> Execution',
+];
+const xValueTiming = [
+  790,
+  4276,
+  2932,
+  2862,
+  1332,
+  4896,
+  3427,
+  3316,
+  ]
+
 class App extends Component {
   render() {
     return (
@@ -41,7 +62,22 @@ class App extends Component {
             type: 'bar',
           },
         ]}
-        layout={{width: 1024, height: 480, title: 'Pipeline Size (KB)'}}
+        layout={{width: 1024, height: 480, margin: { l: 100, r: 50, t: 100, b: 180 }, yaxis: { title: 'File size (KB)' }, title: 'Pipeline Size (KB)'}}
+      />
+       <Plot
+        data={[
+          {
+            x: xValueTiming,
+            y: yValueTiming,
+            orientation: 'h',
+            type: 'bar',
+            marker: {
+              color: 'rgba(255,153,51,0.6)',
+              width: 1
+            }
+          },
+        ]}
+        layout={{width: 1024, height: 880, margin: { l: 200, r: 20, t: 120, b: 50 }, xaxis: { title: 'Duration (ms)' }, title: 'Timing (milliseconds)'}}
       />
 
 

@@ -64,7 +64,7 @@ const runMedicalDemo1 = function() {
   .then(function ({stdout, stderr, outputs}) {
     const t1 = performance.now();
     const medicalDemo1TextArea = document.getElementById('medicalDemo1TextArea');
-    const duration = Number(t1 - t0).toFixed(1).toString() 
+    const duration = Number(t1 - t0).toFixed(1).toString()
     medicalDemo1TextArea.textContent = "Runtime initialization, execution, and data marshalling took: " + duration + " milliseconds.\n" + stdout
     medicalDemo1Output = outputs[0].data
     console.log("runMedicalDemo1 took " + duration + " milliseconds.")
@@ -79,6 +79,42 @@ const downloadMedicalDemo1Output = function () {
 }
 const medicalDemo1DownloadButton = document.getElementById('runMedicalDemo1Output');
 medicalDemo1DownloadButton.addEventListener('click', downloadMedicalDemo1Output)
+
+
+
+// GenerateModelsFromLabels
+let generateModelsFromLabelsOutput = null
+const runGenerateModelsFromLabels = function() {
+  const pipelinePath = 'GenerateModelsFromLabels'
+  const args = ['InputImage.vtk', '1', '1']
+  const desiredOutputs = [
+    { path: 'Label1.vtk', type: IOTypes.Binary }
+  ]
+  const inputImageCopy = inputImage.slice(0);
+  const image = new Uint8Array(inputImageCopy)
+  const inputs = [
+    { path: args[0], type: IOTypes.Binary, data: image }
+  ]
+  const t0 = performance.now()
+  return runPipelineBrowser(pipelinePath, args, desiredOutputs, inputs)
+  .then(function ({stdout, stderr, outputs}) {
+    const t1 = performance.now();
+    const generateModelsFromLabelsTextArea = document.getElementById('generateModelsFromLabelsTextArea');
+    const duration = Number(t1 - t0).toFixed(1).toString()
+    generateModelsFromLabelsTextArea.textContent = "Runtime initialization, execution, and data marshalling took: " + duration + " milliseconds.\n" + stdout
+    generateModelsFromLabelsOutput = outputs[0].data
+    console.log("runGenerateModelsFromLabels took " + duration + " milliseconds.")
+    console.log(stderr)
+  })
+}
+const runGenerateModelsFromLabelsButton = document.getElementById('runGenerateModelsFromLabels');
+runGenerateModelsFromLabelsButton.addEventListener('click', runGenerateModelsFromLabels)
+const downloadGenerateModelsFromLabelsOutput = function () {
+  const isosurfaceBlob = new window.Blob([generateModelsFromLabelsOutput])
+  FileSaver.saveAs(isosurfaceBlob, 'OutputSurface.vtk')
+}
+const generateModelsFromLabelsDownloadButton = document.getElementById('runGenerateModelsFromLabelsOutput');
+generateModelsFromLabelsDownloadButton.addEventListener('click', downloadGenerateModelsFromLabelsOutput)
 
 
 

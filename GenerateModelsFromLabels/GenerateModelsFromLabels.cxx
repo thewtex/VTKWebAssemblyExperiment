@@ -25,6 +25,8 @@
 #include <vtkUnstructuredGrid.h>
 #include <sstream>
 
+#include <chrono>
+
 int main (int argc, char *argv[])
 {
   if (argc < 4)
@@ -32,6 +34,8 @@ int main (int argc, char *argv[])
     std::cout << "Usage: " << argv[0] << " InputVolume StartLabel EndLabel" << std::endl;
     return EXIT_FAILURE;
   }
+
+  auto start = std::chrono::steady_clock::now();
 
   // Create all of the classes we will need
   vtkSmartPointer<vtkStructuredPointsReader> reader =
@@ -127,5 +131,11 @@ int main (int argc, char *argv[])
     writer->Write();
 
   }
+
+  auto end = std::chrono::steady_clock::now();
+  auto diff = end - start;
+
+  std::cout << "Execution took:                                               " << std::chrono::duration< double, std::milli >( diff ).count() << " milliseconds." << std::endl;
+
   return EXIT_SUCCESS;
 }
