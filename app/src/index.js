@@ -47,6 +47,7 @@ imageFileInput.addEventListener('change', outputInputImageInformation);
 
 // MedicalDemo1
 let medicalDemo1Output = null
+
 const runMedicalDemo1 = function() {
   const pipelinePath = 'MedicalDemo1'
   const args = ['InputImage.vtk', 'OutputSurface.vtk']
@@ -58,20 +59,23 @@ const runMedicalDemo1 = function() {
   const inputs = [
     { path: args[0], type: IOTypes.Binary, data: image }
   ]
+
   const t0 = performance.now()
   return runPipelineBrowser(pipelinePath, args, desiredOutputs, inputs)
-  .then(function ({stdout, stderr, outputs}) {
-    const t1 = performance.now();
-    const medicalDemo1TextArea = document.getElementById('medicalDemo1TextArea');
-    const duration = Number(t1 - t0).toFixed(1).toString()
-    medicalDemo1TextArea.textContent = "Runtime initialization, execution, and data marshalling took: " + duration + " milliseconds.\n" + stdout
-    medicalDemo1Output = outputs[0].data
-    console.log("runMedicalDemo1 took " + duration + " milliseconds.")
-    console.log(stderr)
-  })
+    .then(function ({stdout, stderr, outputs}) {
+      const t1 = performance.now();
+      const medicalDemo1TextArea = document.getElementById('medicalDemo1TextArea');
+      const duration = Number(t1 - t0).toFixed(1).toString()
+      medicalDemo1TextArea.textContent = "Runtime initialization, execution, and data marshalling took: " + duration + " milliseconds.\n" + stdout
+      medicalDemo1Output = outputs[0].data
+      console.log("runMedicalDemo1 took " + duration + " milliseconds.")
+      console.log(stderr)
+    })
 }
+
 const runMedicalDemo1Button = document.getElementById('runMedicalDemo1');
 runMedicalDemo1Button.addEventListener('click', runMedicalDemo1)
+
 const downloadMedicalDemo1Output = function () {
   const isosurfaceBlob = new window.Blob([medicalDemo1Output])
   FileSaver.saveAs(isosurfaceBlob, 'OutputSurface.vtk')
@@ -83,6 +87,7 @@ medicalDemo1DownloadButton.addEventListener('click', downloadMedicalDemo1Output)
 
 // GenerateModelsFromLabels
 let generateModelsFromLabelsOutput = null
+
 const runGenerateModelsFromLabels = function() {
   const pipelinePath = 'GenerateModelsFromLabels'
   const args = ['InputImage.vtk', '1', '1']
@@ -94,6 +99,7 @@ const runGenerateModelsFromLabels = function() {
   const inputs = [
     { path: args[0], type: IOTypes.Binary, data: image }
   ]
+
   const t0 = performance.now()
   return runPipelineBrowser(pipelinePath, args, desiredOutputs, inputs)
   .then(function ({stdout, stderr, outputs}) {
@@ -106,8 +112,10 @@ const runGenerateModelsFromLabels = function() {
     console.log(stderr)
   })
 }
+
 const runGenerateModelsFromLabelsButton = document.getElementById('runGenerateModelsFromLabels');
 runGenerateModelsFromLabelsButton.addEventListener('click', runGenerateModelsFromLabels)
+
 const downloadGenerateModelsFromLabelsOutput = function () {
   const isosurfaceBlob = new window.Blob([generateModelsFromLabelsOutput])
   FileSaver.saveAs(isosurfaceBlob, 'OutputSurface.vtk')
