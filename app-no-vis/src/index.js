@@ -29,7 +29,6 @@ const outputFileInformation = curry(function (outputTextArea, eventOrFile) {
   PromiseFileReader.readAsArrayBuffer(file).then(function(arrayBuffer) { inputImage = arrayBuffer; })
   return readImageFile(file)
     .then(function (image) {
-      image.name = file.name
       function replacer (key, value) {
         if (!!value && value.byteLength !== undefined) {
           return String(value.slice(0, 6)) + '...'

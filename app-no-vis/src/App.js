@@ -23,7 +23,7 @@ const yValueSize = [
 ];
 
 const yValueTiming = [
-  'MedicalDemo1<br> Linux native binary',
+  'MedicalDemo1<br> Linux Native Binary',
   'MedicalDemo1<br> Linux Chrome 65.0.3325.162<br> First Run',
   'MedicalDemo1<br> Linux Chrome 65.0.3325.162<br> Second Run',
   'MedicalDemo1<br> Linux Chrome 65.0.3325.162<br> Execution',
@@ -31,7 +31,7 @@ const yValueTiming = [
   'MedicalDemo1<br> Linux Firefox 59.0.1<br> Second Run',
   'MedicalDemo1<br> Linux Firefox 59.0.1<br> Execution',
   '',
-  'GenerateModelsFromLabels<br> Linux native binary',
+  'GenerateModelsFromLabels<br> Linux Native Binary',
   'GenerateModelsFromLabels<br> Linux Chrome 65.0.3325.162<br> First Run',
   'GenerateModelsFromLabels<br> Linux Chrome 65.0.3325.162<br> Second Run',
   'GenerateModelsFromLabels<br> Linux Chrome 65.0.3325.162<br> Execution',
