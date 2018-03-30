@@ -89,8 +89,11 @@
       <p>2. <a href="https://docs.docker.com/install/">Install Docker</a></p>
       <p>3. Add the <code>itk-js</code> script to your <code>PATH</code> with: <code>npm install -g itk</code></p>
       <p>4. Download and unpack a <a href="https://lorensen.github.io/VTKExamples/site/">VTK Example</a></p>
-      <p>5. Add calls to <code>web_add_executable</code> and <code>web_target_link_libraries</code> in the <code>CMakeLists.txt</code></p>
-      <p>6. <code>itk-js build -i kitware/itk-js-vtk /path/to/VTK/Example/Source</code></p>
+      <p>5. Remove rendering code from the sources (which can otherwise remain
+        unmodified), and <a href="https://github.com/thewtex/VTKWebAssemblyExperiment/blob/93f6cfc77966d5ba570234a57dfd0c6f50dd2616/MedicalDemo1/CMakeLists.txt#L12-L16">add calls</a>
+        to <code>web_add_executable</code> and
+    <code>web_target_link_libraries</code> in the <code>CMakeLists.txt</code>.</p>
+      <p>6. In a bash shell: <code>itk-js build -i kitware/itk-js-vtk /path/to/VTK/Example/Source</code></p>
     </div>
 
   </body>
