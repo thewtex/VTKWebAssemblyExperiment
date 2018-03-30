@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './VTKWebAssemblyExperiment.png';
 import './App.css';
 import Plot from 'react-plotly.js';
 
@@ -65,11 +65,11 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">VTK WebAssembly Experiment</h1>
-          <img src={logo} className="App-logo" alt="logo" />
         </header>
         <p className="App-intro">
-      {  /*To get started, edit <code>src/App.js</code> and save to reload. */ }
+    Performance of VTK isosurface contouring algorithms in the browser as of 2018-03-30.
         </p>
+        <img src={logo} height="300px" alt="logo" />
        <Plot
         data={[
           {
@@ -78,7 +78,7 @@ class App extends Component {
             type: 'bar',
           },
         ]}
-        layout={{width: 1024, height: 480, margin: { l: 100, r: 50, t: 100, b: 180 }, yaxis: { title: 'File size (KB)' }, title: 'Pipeline Size (KB)'}}
+        layout={{width: 1024, height: 480, margin: { l: 100, r: 50, t: 100, b: 180 }, yaxis: { title: 'File size (KB)' }, title: 'File Size (KB) - Smaller is Better'}}
       />
        <Plot
         data={[
@@ -93,7 +93,7 @@ class App extends Component {
             }
           },
         ]}
-        layout={{width: 1024, height: 880, margin: { l: 200, r: 20, t: 120, b: 50 }, xaxis: { title: 'Duration (ms)' }, title: 'Timing (milliseconds)'}}
+        layout={{width: 1024, height: 880, margin: { l: 200, r: 20, t: 120, b: 50 }, xaxis: { title: 'Duration (ms)' }, title: 'Timing (milliseconds) - Lower is Better'}}
       />
 
 

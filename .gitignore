@@ -1,2 +1,7 @@
 MedicalDemo1/build/
 GenerateModelsFromLabels/build/
+
+GenerateModelsFromLabels/web-build/
+MedicalDemo1/web-build/
+app/public/itk/
+app/yarn.lock
