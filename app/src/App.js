@@ -54,6 +54,9 @@ const yValueTiming = [
   'MedicalDemo1<br> Linux Firefox 59.0.1<br> First Run',
   'MedicalDemo1<br> Linux Firefox 59.0.1<br> Second Run',
   'MedicalDemo1<br> Linux Firefox 59.0.1<br> Execution',
+  '',
+  'ImageMarchingCubes<br> Linux Chrome 65.0.3325.162<br> Execution',
+  'ImageMarchingCubes<br> Linux Firefox 59.0.1<br> Execution',
 ];
 const xValueTiming = [
   1332,
@@ -83,6 +86,11 @@ const xValueTiming = [
   6068,
   5202,
   5074,
+
+  0,
+
+  4622,
+  3108,
 
   ]
 

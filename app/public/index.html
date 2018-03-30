@@ -32,7 +32,6 @@
 
     <h2>Execute the Pipelines in Your Browser!</h2>
 
-
     <h3>Input image</h3>
     <div>
       <label>Select input image:</label>
@@ -94,6 +93,17 @@
         to <code>web_add_executable</code> and
     <code>web_target_link_libraries</code> in the <code>CMakeLists.txt</code>.</p>
       <p>6. In a <i>bash</i> shell: <code>itk-js build -i kitware/itk-js-vtk /path/to/VTK/Example/Source</code></p>
+    </div>
+
+    <div>
+      <h3>vjk.js vtkImageMarchingCubes</h3>
+      <p>To test the handwritten ImageMarchingCubes JavaScript implementation, load
+      <a href="https://data.kitware.com/#item/5abe80798d777f0685791259">this image</a>
+       in <a href="https://kitware.github.io/pv-web-viewer/app/">ParaView Glance</a>.
+      Open the browser developer console (<i>Ctrl + Shift + I</i>), and run
+      the <i>Contour</i> Filter on the image with <i>Contour Value</i> set to
+      <code>500</code> and <i>Compute Normals</i> and <i>Merge Points</i>
+      enabled.</p>
     </div>
 
   </body>
