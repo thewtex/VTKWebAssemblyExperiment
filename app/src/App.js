@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './VTKWebAssemblyExperiment.png';
+import githubLogo from './github.png';
 import './App.css';
 import Plot from 'react-plotly.js';
 
@@ -99,12 +100,13 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">VTK WebAssembly Experiment</h1>
+          <h1>VTK WebAssembly Experiment</h1>
         </header>
+        <p><img src={logo} height="300px" alt="logo" /></p>
         <p className="App-intro">
     Performance of VTK isosurface contouring algorithms in the browser as of 2018-03-30.
         </p>
-        <img src={logo} height="300px" alt="logo" />
+        <p><a href="https://github.com/thewtex/VTKWebAssemblyExperiment"><img src={githubLogo} height="64px" alt="Sources on GitHub" /></a></p>
        <Plot
         data={[
           {
