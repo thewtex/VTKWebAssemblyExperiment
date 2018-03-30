@@ -32,13 +32,13 @@
 
     <h2>Execute the Pipelines in Your Browser!</h2>
 
-    <h3>Input image</h3>
+    <h3>Input volume</h3>
     <div>
-      <label>Select input image:</label>
+      <label>Select input volume:</label>
       <input id="imageInput" name="inputFile" type="file">
     </div>
     <div>
-      <textarea id="fileInformationTextArea" name="fileInformation" rows="20" cols="80">Input image information...</textarea>
+      <textarea id="fileInformationTextArea" name="fileInformation" rows="20" cols="80">Input volume information...</textarea>
     </div>
 
 
@@ -72,7 +72,7 @@
       <h3>GenerateModelsFromLabels</h3>
       <p>Based on <a
         href="https://lorensen.github.io/VTKExamples/site/Cxx/Medical/GenerateModelsFromLabels/">VTKExamples
-        GenerateModelsFromLabels</a>. Run with <a href="./FullHeadThreshold.vtk">this input image.</a></p>
+        GenerateModelsFromLabels</a>. Run with <a href="./FullHeadThreshold.vtk">this input volume.</a></p>
 
       <input id="runGenerateModelsFromLabels" type="button" value="Run GenerateModelsFromLabels"></input>
       <br>
@@ -98,10 +98,10 @@
     <div>
       <h3>vjk.js vtkImageMarchingCubes</h3>
       <p>To test the handwritten ImageMarchingCubes JavaScript implementation, load
-      <a href="https://data.kitware.com/#item/5abe80798d777f0685791259">this image</a>
+      <a href="https://data.kitware.com/#item/5abe80798d777f0685791259">this volume</a>
        in <a href="https://kitware.github.io/pv-web-viewer/app/">ParaView Glance</a>.
       Open the browser developer console (<i>Ctrl + Shift + I</i>), and run
-      the <i>Contour</i> Filter on the image with <i>Contour Value</i> set to
+      the <i>Contour</i> Filter on the volume with <i>Contour Value</i> set to
       <code>500</code> and <i>Compute Normals</i> and <i>Merge Points</i>
       enabled.</p>
     </div>
