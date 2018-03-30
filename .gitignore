@@ -1,7 +1,9 @@
 MedicalDemo1/build/
+FlyingEdges/build/
 GenerateModelsFromLabels/build/
 
 GenerateModelsFromLabels/web-build/
+FlyingEdges/web-build/
 MedicalDemo1/web-build/
 app/public/itk/
 app/yarn.lock

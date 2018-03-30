@@ -5,32 +5,32 @@ import Plot from 'react-plotly.js';
 
 const xValueSize = [
   'ImageMarchingCubes<br> vtk.js',
-  'GenerateModelsFromLabels<br> asm.js',
-  'GenerateModelsFromLabels<br> wasm',
   'MedicalDemo1<br> asm.js',
   'MedicalDemo1<br> wasm',
+  'FlyingEdges<br> asm.js',
+  'FlyingEdges<br> wasm',
+  'GenerateModelsFromLabels<br> asm.js',
+  'GenerateModelsFromLabels<br> wasm',
   'ITK pipeline<br> asm.js',
   'ITK pipeline<br> wasm',
 ];
 const yValueSize = [
   32,
-  8036,
-  3752,
+
   7963,
   3764,
+
+  8240,
+  3886,
+
+  8036,
+  3752,
+
   1356,
   752,
 ];
 
 const yValueTiming = [
-  'MedicalDemo1<br> Linux Native Binary',
-  'MedicalDemo1<br> Linux Chrome 65.0.3325.162<br> First Run',
-  'MedicalDemo1<br> Linux Chrome 65.0.3325.162<br> Second Run',
-  'MedicalDemo1<br> Linux Chrome 65.0.3325.162<br> Execution',
-  'MedicalDemo1<br> Linux Firefox 59.0.1<br> First Run',
-  'MedicalDemo1<br> Linux Firefox 59.0.1<br> Second Run',
-  'MedicalDemo1<br> Linux Firefox 59.0.1<br> Execution',
-  '',
   'GenerateModelsFromLabels<br> Linux Native Binary',
   'GenerateModelsFromLabels<br> Linux Chrome 65.0.3325.162<br> First Run',
   'GenerateModelsFromLabels<br> Linux Chrome 65.0.3325.162<br> Second Run',
@@ -38,8 +38,44 @@ const yValueTiming = [
   'GenerateModelsFromLabels<br> Linux Firefox 59.0.1<br> First Run',
   'GenerateModelsFromLabels<br> Linux Firefox 59.0.1<br> Second Run',
   'GenerateModelsFromLabels<br> Linux Firefox 59.0.1<br> Execution',
+  '',
+  'FlyingEdges<br> Linux Native Binary',
+  'FlyingEdges<br> Linux Chrome 65.0.3325.162<br> First Run',
+  'FlyingEdges<br> Linux Chrome 65.0.3325.162<br> Second Run',
+  'FlyingEdges<br> Linux Chrome 65.0.3325.162<br> Execution',
+  'FlyingEdges<br> Linux Firefox 59.0.1<br> First Run',
+  'FlyingEdges<br> Linux Firefox 59.0.1<br> Second Run',
+  'FlyingEdges<br> Linux Firefox 59.0.1<br> Execution',
+  '',
+  'MedicalDemo1<br> Linux Native Binary',
+  'MedicalDemo1<br> Linux Chrome 65.0.3325.162<br> First Run',
+  'MedicalDemo1<br> Linux Chrome 65.0.3325.162<br> Second Run',
+  'MedicalDemo1<br> Linux Chrome 65.0.3325.162<br> Execution',
+  'MedicalDemo1<br> Linux Firefox 59.0.1<br> First Run',
+  'MedicalDemo1<br> Linux Firefox 59.0.1<br> Second Run',
+  'MedicalDemo1<br> Linux Firefox 59.0.1<br> Execution',
 ];
 const xValueTiming = [
+  1332,
+  4896,
+  3427,
+  3316,
+  4878,
+  4068,
+  3972,
+
+  0,
+
+  850,
+  4896,
+  3427,
+  3316,
+  4878,
+  4068,
+  3972,
+
+  0,
+
   790,
   4276,
   2932,
@@ -48,15 +84,6 @@ const xValueTiming = [
   3654,
   3536,
 
-  0,
-
-  1332,
-  4896,
-  3427,
-  3316,
-  4878,
-  4068,
-  3972,
   ]
 
 class App extends Component {
@@ -93,7 +120,7 @@ class App extends Component {
             }
           },
         ]}
-        layout={{width: 1024, height: 880, margin: { l: 200, r: 20, t: 120, b: 50 }, xaxis: { title: 'Duration (ms)' }, title: 'Timing (milliseconds) - Lower is Better'}}
+        layout={{width: 1024, height: 1880, margin: { l: 200, r: 20, t: 120, b: 50 }, xaxis: { title: 'Duration (ms)' }, title: 'Timing (milliseconds) - Lower is Better'}}
       />
 
 

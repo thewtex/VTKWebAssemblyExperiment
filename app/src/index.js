@@ -84,6 +84,44 @@ const medicalDemo1DownloadButton = document.getElementById('runMedicalDemo1Outpu
 medicalDemo1DownloadButton.addEventListener('click', downloadMedicalDemo1Output)
 
 
+// FlyingEdges
+let flyingEdgesOutput = null
+
+const runFlyingEdges = function() {
+  const pipelinePath = 'FlyingEdges'
+  const args = ['InputImage.vtk', 'OutputSurface.vtk']
+  const desiredOutputs = [
+    { path: args[1], type: IOTypes.Binary }
+  ]
+  const inputImageCopy = inputImage.slice(0);
+  const image = new Uint8Array(inputImageCopy)
+  const inputs = [
+    { path: args[0], type: IOTypes.Binary, data: image }
+  ]
+
+  const t0 = performance.now()
+  return runPipelineBrowser(pipelinePath, args, desiredOutputs, inputs)
+    .then(function ({stdout, stderr, outputs}) {
+      const t1 = performance.now();
+      const flyingEdgesTextArea = document.getElementById('flyingEdgesTextArea');
+      const duration = Number(t1 - t0).toFixed(1).toString()
+      flyingEdgesTextArea.textContent = "Runtime initialization, execution, and data marshalling took: " + duration + " milliseconds.\n" + stdout
+      flyingEdgesOutput = outputs[0].data
+      console.log("runFlyingEdges took " + duration + " milliseconds.")
+      console.log(stderr)
+    })
+}
+
+const runFlyingEdgesButton = document.getElementById('runFlyingEdges');
+runFlyingEdgesButton.addEventListener('click', runFlyingEdges)
+
+const downloadFlyingEdgesOutput = function () {
+  const isosurfaceBlob = new window.Blob([flyingEdgesOutput])
+  FileSaver.saveAs(isosurfaceBlob, 'OutputSurface.vtk')
+}
+const flyingEdgesDownloadButton = document.getElementById('runFlyingEdgesOutput');
+flyingEdgesDownloadButton.addEventListener('click', downloadFlyingEdgesOutput)
+
 
 // GenerateModelsFromLabels
 let generateModelsFromLabelsOutput = null
